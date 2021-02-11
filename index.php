@@ -2,10 +2,17 @@
 
 define('VG_ACCESS', true);
 
-header( string: 'Content-Type:text/html;charset=utf-8');
+header( string: 'Content-Type:text/html;charset=utf-8' );
 session_start();
 
 require_once 'config.php';
 require_once 'core/base/settings/internal_settings.php';
 
+use core\base\exceptions\RouteException;
 
+try {
+    (new A());
+}
+catch (RouteException $e){
+    exit($e->getMessage());
+}
