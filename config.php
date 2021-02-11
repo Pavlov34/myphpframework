@@ -1,9 +1,16 @@
 <?php
 
-defined(name: 'VG_ACCESS') or die('Access denied');
+defined( name: 'VG_ACCESS') or die('Access denied');
 
-echo 'hello';
+const SITE_URL = 'http://myphpframework';
+const PATH = '/';
+
+const HOST = 'localhost';
+const USER = 'root';
+const PASS = '';
+const DB_NAME = 'myphpframework';
 
 
 
-?>
+
+
