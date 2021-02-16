@@ -1,7 +1,7 @@
 <?php
 
-function print_arr($arr){
-    echo '<pre>';
-    print_r($arr);
+function print_arr($arr){ // подаем некий массив
+    echo '<pre>'; // для отображения в браузере не отображаемы сыимволов
+    print_r($arr); // распечатываем наш массив
     echo '<pre>';
 }

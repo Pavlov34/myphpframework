@@ -1,6 +1,6 @@
 <?php
 
-namespace core\base\controllers;
+namespace core\base\controllers; // импортируем пространство имен
 
 use core\base\settings\Settings;
 
@@ -20,7 +20,7 @@ class RouteController
         return self::$_instance = new self;
     }
 
-    private function __construct()
+    private function __construct() // создаем обьект класса для распечатывания массива (пример)
     {
         $arr = ['1',2,3,4,5];
         print_arr($arr);
