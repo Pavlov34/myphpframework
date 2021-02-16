@@ -3,6 +3,7 @@
 namespace core\base\controllers; // импортируем пространство имен
 
 use core\base\settings\Settings;
+use core\base\settings\ShopSettings;
 
 class RouteController
 {
@@ -22,7 +23,8 @@ class RouteController
 
     private function __construct() // создаем обьект класса для распечатывания массива (пример)
     {
-        $arr = ['1',2,3,4,5];
-        print_arr($arr);
+        $s = Settings::get('routes');
+        $sl = ShopSettings::get('property1');
+        exit();
     }
 }

@@ -13,6 +13,15 @@ class ShopSettings // Наследуемся от основного класс�
     static private $_instance;
     private $baseSettings;
 
+    private $routes = [
+      'admin' => [
+          'name' => 'sudo',
+      ],
+        'vasya' => [
+            'name' => 'vasya'
+        ]
+    ];
+
     private $templateArr = [
         'text' => ['name', 'phone', 'adress', 'price', 'short'],
         'textarea' => ['content', 'keywords', 'goods_content']
@@ -27,10 +36,21 @@ class ShopSettings // Наследуемся от основного класс�
             return self::$_instanse; // возвращаем
         }// в противном случаем вернем
 
+        self::$_instanse = new self; // предварительно создаем обьект нашего класса
         self::$_instance->baseSettings = Settings::instance();
-        ;
-        return self::$_instanse = new self; // предварительно создаем обьект нашего класса и возвращаем
+        $baseProperties = self::$_instance->baseSettings->clueProperties(get_class()); // создаем уникальный метод clueProperties, а get_class это указание на ShopSettings
+        self::$_instance->setProperty($baseProperties);
+
+        return self::$_instanse; // предварительно создаем обьект нашего класса и возвращаем
     } // все шаблон Single Ton мы реализовали.
+
+    protected function setProperty($properties){
+        if($properties){
+            foreach ($properties as $name => $property) {
+                $this->$name = $property;
+            }
+        }
+    }
 
     private function __construct() // закрыть контруктор класса
     {
