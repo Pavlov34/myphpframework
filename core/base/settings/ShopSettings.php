@@ -3,11 +3,15 @@
 
 namespace core\base\settings;
 
+use Cassandra\Set;
+use core\base\settings\Settings;
 
-class ShopSettings extends Settings // Наследуемся от основного класса. эти настройки расширяют основные настройки.
+
+class ShopSettings // Наследуемся от основного класса. эти настройки расширяют основные настройки.
 {
 
-    static private $_instance; //
+    static private $_instance;
+    private $baseSettings;
 
     private $templateArr = [
         'text' => ['name', 'phone', 'adress', 'price', 'short'],
@@ -22,6 +26,9 @@ class ShopSettings extends Settings // Наследуемся от основн�
         if(self::$_instanse instanceof self){ // если в свойстве instance хранится обьект нашего класса то есть самого себя то
             return self::$_instanse; // возвращаем
         }// в противном случаем вернем
+
+        self::$_instance->baseSettings = Settings::instance();
+        ;
         return self::$_instanse = new self; // предварительно создаем обьект нашего класса и возвращаем
     } // все шаблон Single Ton мы реализовали.
 
